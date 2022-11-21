@@ -1,0 +1,7 @@
+table {
+    width: 100%;
+}
+
+.mat-fab {
+    transform: scale(.8);
+}

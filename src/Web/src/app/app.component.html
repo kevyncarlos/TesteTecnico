@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <span>Teste Técnico</span>
+</mat-toolbar>
+
+<br>
+
+<button mat-raised-button (click)="addDialog()">
+  <mat-icon>add</mat-icon>
+  Add Client
+</button>
+
+<br>
+<br>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Nº </th>
+    <td mat-cell *matCellDef="let client"> {{client.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let client"> {{client.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="birthDate">
+    <th mat-header-cell *matHeaderCellDef> Birth Date </th>
+    <td mat-cell *matCellDef="let client"> {{client.birthDate | mask: '9999-99-99'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address </th>
+    <td mat-cell *matCellDef="let client"> {{client.address}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createdAt">
+    <th mat-header-cell *matHeaderCellDef> Created At </th>
+    <td mat-cell *matCellDef="let client"> {{client.createdAt | mask: '9999-99-99 99:99'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="updatedAt">
+    <th mat-header-cell *matHeaderCellDef> Updated At </th>
+    <td mat-cell *matCellDef="let client"> {{client.updatedAt | mask: '9999-99-99 99:99'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let client">
+      
+      <button mat-fab color="primary" (click)="editDialog(client)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-fab color="warn" (click)="deleteDialog(client)">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
